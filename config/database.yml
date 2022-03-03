@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV["PIKABU_DATABASE_USERNAME"] %>
+  password: <%= ENV["PIKABU_DATABASE_PASSWORD"] %>
+  host: <%= ENV["PIKABU_DATABASE_HOST"] %>
+
+development:
+  <<: *default
+  database: pikabu_development
+
+test:
+  <<: *default
+  database: pikabu_test
+
+production:
+  <<: *default
+  database: pikabu_production
